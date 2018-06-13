@@ -1,0 +1,27 @@
+﻿@model FinalProject.Models.Question
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<hml>
+<head>
+    <title>Редактирование вопросов</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("EditQuestion", "Question", FormMethod.Post))
+        {
+            @Html.ActionLink("На главную", "GetQuestions", "Question", new { id = Model.QuestionnaireId })
+            <br />
+            @Html.LabelFor(model => model.Formulation, "Формулировка вопроса: ")
+            @Html.EditorFor(model => model.Formulation)
+            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model.QuestionnaireId)
+            <input type="submit" value="Подтвердить"/>
+        }
+    </div>
+</body>
+</hml>
+

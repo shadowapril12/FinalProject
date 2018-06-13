@@ -1,0 +1,41 @@
+﻿@{
+    Layout = null;
+}
+
+<!--Представление по умолчанию приложения в целом-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Главная</title>
+</head>
+<body>
+    <div>
+        Полюзователь:
+        <br />
+        @foreach(var u in ViewBag.Users)
+        {
+            <p>Имя - @u.Name</p>
+            <p>Роль - @u.Role</p>
+        }
+    </div>
+    <div>
+        @if(ViewBag.Questionnaires.Count > 0)
+        {
+            foreach(var questionnaire in ViewBag.Questionnaires)
+            {
+                <p>Название анкеты: @questionnaire.Name</p>
+            }
+        }
+        else
+        {
+            <p>Анкеты пока отстутствуют</p>
+        }
+        <div>
+            @using (Html.BeginForm("AddQuestionnaireForm", "Questionnaire", FormMethod.Post))
+            {
+                <input type="submit" value="Добавить анкету"/>
+            }          
+        </div>
+    </div>
+</body>
+</html>

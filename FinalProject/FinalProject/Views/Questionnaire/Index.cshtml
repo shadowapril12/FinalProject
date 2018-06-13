@@ -1,0 +1,36 @@
+﻿@model IEnumerable<FinalProject.Models.Questionnaire>
+
+@{
+    Layout = null;
+}
+
+<!--Представление по умолчанию контроллера Questionnaire-->
+<!DOCTYPE html>
+<head>
+    <title>
+        Список анкет
+    </title>
+</head>
+<body>
+    <div>
+        @foreach (var questionnaire in Model)
+        {
+            <div style="border-style:solid; border-width:1px; border-color:black">
+                @using (Html.BeginForm("EditQuestionnaireForm", "Questionnaire", FormMethod.Post))
+                {
+                    <p>
+                        Название анкеты: @Html.DisplayFor(modelItem => questionnaire.Name)
+                    </p>
+                    <p>
+                        @Html.HiddenFor(modelItem => questionnaire.Id)
+                    </p>                   
+                    <input type="submit" value="Редактировать"/>
+                    <p>
+                        @Html.ActionLink("Перейти к вопросам анкеты", "GetQuestions", "Question", new { id = questionnaire.Id}, null)
+                    </p>
+                }
+            </div>           
+        }
+    </div>
+</body>
+

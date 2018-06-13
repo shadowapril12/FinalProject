@@ -1,0 +1,25 @@
+﻿@model FinalProject.Models.Questionnaire
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Форма добавления анкеты</title>
+</head>
+<body>
+    <div style="border-width: 1px; border-style:solid; border-color:black">
+        @using (Html.BeginForm("AddQuestionnaire", "Questionnaire", FormMethod.Post))
+        {
+            @Html.LabelFor(model => model.Name, "Название анкеты");
+            <br />
+            @Html.EditorFor(model => model.Name);
+            <br />
+            <input type="submit" value="Добавить"/>            
+        }
+    </div>
+</body>
+</html>
+

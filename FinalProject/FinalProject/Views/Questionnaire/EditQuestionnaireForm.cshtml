@@ -1,0 +1,24 @@
+﻿@model FinalProject.Models.Questionnaire
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Форма редактирования анкеты</title>
+</head>
+<body>
+    @using (Html.BeginForm("EditQuestionnaire", "Questionnaire", FormMethod.Post))
+    {
+        <p>@Html.HiddenFor(model => model.Id)</p>
+        @Html.LabelFor(model => model.Name, "Название анкеты");
+        <br />
+        @Html.EditorFor(model => model.Name);
+        <input type="submit" value="Редактровать"/>
+    }
+</body>
+</html>
+

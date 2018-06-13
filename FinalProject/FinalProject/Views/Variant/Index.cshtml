@@ -1,0 +1,46 @@
+﻿@using FinalProject.Models
+@model IEnumerable<Variant>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список вариантов ответа</title>
+</head>
+<body>
+    <div>@ViewBag.QuestionFormulation</div>
+    @if (Model.ToList().Count > 0)
+    {
+        @foreach (Variant variant in Model)
+        {
+            @using (Html.BeginForm("MyAction", "Variant", FormMethod.Post))
+            {
+                @Html.LabelFor(modelItem => variant.Number, "Номер вопроса: ")
+                @Html.DisplayFor(modelItem => variant.AnswerFormulation)
+                <br />
+                @Html.LabelFor(modelItem => variant.AnswerFormulation, "Формулировка ответа: ")
+                @Html.LabelFor(modelItem => variant.AnswerFormulation)
+                @Html.HiddenFor(modelItem => variant.Id)
+                @Html.HiddenFor(modelItem => variant.QuestionId)
+                <br />
+                <button name="action" value="edit">Редактировать</button>
+                <button name="action" value="delete">Удалить</button>
+            }
+        }
+    }
+    else
+    {
+        <p>Вариантов ответа пока нет</p>
+    }
+    <div>
+        @using (Html.BeginForm("AddVariantForm", "Variant", FormMethod.Post))
+        {
+            @Html.HiddenFor()
+        }
+    </div>
+</body>
+</html>
+

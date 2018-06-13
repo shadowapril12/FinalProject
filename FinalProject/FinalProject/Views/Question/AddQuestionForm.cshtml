@@ -1,0 +1,31 @@
+﻿@model FinalProject.Models.Question
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Добавление вопроса
+    </title>
+</head>
+<body>
+    <div>
+        <a href="~/Controllers/Home/Index">На главную</a>
+        @using (Html.BeginForm("AddQuestion", "Question", FormMethod.Post))
+        {
+            @Html.LabelFor(model => model.Formulation, "Формулировка вопроса: ")
+            @Html.EditorFor(model => model.Formulation)
+            <br />
+            @Html.DisplayFor(model => model.Questionnaire.Name, "Название анкеты: ")
+            @Html.DisplayFor(model => model.Questionnaire.Name)
+            @Html.HiddenFor(model => model.QuestionnaireId)
+            <br />
+            <input type="submit" value="Добавить вопрос"/>
+        }
+    </div>
+</body>
+</html>
+

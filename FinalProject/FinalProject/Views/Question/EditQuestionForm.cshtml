@@ -6,17 +6,18 @@
 
 <!DOCTYPE html>
 <hml>
-<head>
-    <title>Редактирование вопросов</title>
-</head>
+    <head>
+        <title>Редактирование вопросов</title>
+        <link type="text/css" rel="stylesheet" href="../../Content/EditQuestion.css" />
+    </head>
 <body>
     <div>
-        @using (Html.BeginForm("EditQuestion", "Question", FormMethod.Post))
+        @using (Html.BeginForm("EditQuestion", "Question", FormMethod.Post, new { @class = "Form"}))
         {
-            @Html.ActionLink("На главную", "GetQuestions", "Question", new { id = Model.QuestionnaireId })
+            @Html.ActionLink("Перейти к списку вопросов", "GetQuestions", "Question", new { id = Model.QuestionnaireId })
             <br />
-            @Html.LabelFor(model => model.Formulation, "Формулировка вопроса: ")
-            @Html.EditorFor(model => model.Formulation)
+            @Html.LabelFor(model => model.Formulation, "Формулировка вопроса: ", new { @class = "form-label" })
+            @Html.TextBoxFor(model => model.Formulation, new { @class = "editor" })
             @Html.HiddenFor(model => model.Id)
             @Html.HiddenFor(model => model.QuestionnaireId)
             <input type="submit" value="Подтвердить"/>

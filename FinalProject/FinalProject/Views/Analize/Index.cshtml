@@ -1,0 +1,28 @@
+﻿@model IEnumerable<FinalProject.Models.Statistic>
+@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Статистика</title>
+</head>
+<body>
+    <h2>Статистика</h2>
+    <a href="/Authorisation/index">Закончить тестирование</a>
+    <div>
+        @foreach(var s in ViewBag.St)
+        {
+            <p>@s.QuestionName</p>
+            <ul>
+                @foreach(var v in s.CountTime)
+                {
+                    <li>@v</li>
+                }
+            </ul>
+        }
+    </div>
+</body>
+</html>
+

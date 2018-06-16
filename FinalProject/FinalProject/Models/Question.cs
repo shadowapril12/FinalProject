@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Newtonsoft.Json;
 
 namespace FinalProject.Models
 {
@@ -14,9 +15,11 @@ namespace FinalProject.Models
         public int? QuestionnaireId { get; set; }
 
         public Questionnaire Questionnaire { get; set; }
-
+        
+        [JsonIgnore]
         public ICollection<Variant> Variants { get; set; }
 
+        [JsonIgnore]
         public ICollection<Testing> Testings { get; set; }
 
         public Question()

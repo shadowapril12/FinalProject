@@ -9,9 +9,11 @@ namespace FinalProject.Models
     {
         public int Id { get; set; }
 
-        public string Name { get; set; }
+        public string Login { get; set; }
 
-        public string Role { get; set; }
+        public int? RoleId { get; set; }
+
+        public Role Role { get; set; }
 
         public ICollection<Testing> Testings { get; set; }
 

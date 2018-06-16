@@ -10,23 +10,24 @@
     <title>
         Список анкет
     </title>
+    <link type="text/css" rel="stylesheet" href="../../Content/IndexQuestionnaire.css" />
 </head>
 <body>
     <div>
         @foreach (var questionnaire in Model)
         {
-            <div style="border-style:solid; border-width:1px; border-color:black">
-                @using (Html.BeginForm("EditQuestionnaireForm", "Questionnaire", FormMethod.Post))
+            <div>
+                @using (Html.BeginForm("EditQuestionnaireForm", "Questionnaire", FormMethod.Post, new { @class = "Form" }))
                 {
                     <p>
-                        Название анкеты: @Html.DisplayFor(modelItem => questionnaire.Name)
+                        <span class="p-span">Название анкеты: </span>@Html.DisplayFor(modelItem => questionnaire.Name)
                     </p>
                     <p>
                         @Html.HiddenFor(modelItem => questionnaire.Id)
                     </p>                   
-                    <input type="submit" value="Редактировать"/>
+                    <input type="submit" value="Редактировать название анкеты"/>
                     <p>
-                        @Html.ActionLink("Перейти к вопросам анкеты", "GetQuestions", "Question", new { id = questionnaire.Id}, null)
+                        @Html.ActionLink("Перейти к вопросам анкеты", "GetQuestions", "Question", new { id = questionnaire.Id}, new { @class = "link"})
                     </p>
                 }
             </div>           

@@ -10,16 +10,18 @@
     <title>
         Добавление вопроса
     </title>
+    <link type="text/css" rel="stylesheet" href="../../Content/AddQuestion.css" />
 </head>
 <body>
     <div>
-        <a href="~/Controllers/Home/Index">На главную</a>
-        @using (Html.BeginForm("AddQuestion", "Question", FormMethod.Post))
+        <a href="/Authorisation/index" class="link">На главную</a>
+        <br />
+        @using (Html.BeginForm("AddQuestion", "Question", FormMethod.Post, new { @class = "Form"}))
         {
-            @Html.LabelFor(model => model.Formulation, "Формулировка вопроса: ")
-            @Html.EditorFor(model => model.Formulation)
+            @Html.LabelFor(model => model.Formulation, "Формулировка вопроса: ", new { @class = "form-label"})
+            @Html.TextBoxFor(model => model.Formulation, new { @class = "editor"})
             <br />
-            @Html.DisplayFor(model => model.Questionnaire.Name, "Название анкеты: ")
+            @Html.LabelFor(model => model.Questionnaire.Name, "Название анкеты: ", new { @class = "form-label"})
             @Html.DisplayFor(model => model.Questionnaire.Name)
             @Html.HiddenFor(model => model.QuestionnaireId)
             <br />

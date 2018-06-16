@@ -1,0 +1,27 @@
+﻿@model FinalProject.Models.User
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Вход</title>
+    <link type="text/css" rel="stylesheet" href="../../Content/Authorisation.css" />
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("CheckUser", "Authorisation", FormMethod.Post, new { @class = "Form"}))
+        {
+            <label for="Login" class="form-label">Логин
+                <input type="text" name="Login" id="Login"/>
+            </label>
+            
+            <br />
+            <input type="submit" value="Войти"/>
+        }
+    </div>
+</body>
+</html>
+

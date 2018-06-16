@@ -1,0 +1,59 @@
+﻿body {
+    width: 100%;
+    border: 1px solid black;
+}
+
+.addForm {
+    margin: 0 auto;
+    max-width: 95%;
+    padding: 30px 30px 6px 30px;
+    border: 1px solid rgba(0,0,0,.2);
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    background: rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 0 13px 3px rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 13px 3px rgba(0,0,0,.5);
+    box-shadow: 0 0 13px 3px rgba(0,0,0,.5);
+    overflow: hidden;
+}
+
+.editor {
+    width: 20%;
+}
+
+a.botr {
+    margin-left: 20px;
+    width: 150px;
+    text-align: center;
+    display: block;
+    font-family: arial;
+    text-decoration: none;
+    font-weight: 300;
+    font-size: 14px;
+    border: #1071FF 1px solid;
+    color: rgb (100, 100, 50);
+    padding: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    transition: .5s;
+    border-radius: 0px;
+}
+
+    a.botr:hover {
+        top: 5px;
+        transition: .5s;
+        color: #10FF58;
+        border: #10FF58 1px solid;
+        border-radius: 10px;
+    }
+
+    a.botr:active {
+        color: #000;
+        border: #1A1A1A 1px solid;
+        transition: .07s;
+        background-color: #FFF;
+    }

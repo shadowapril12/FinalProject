@@ -1,5 +1,4 @@
-﻿@using FinalProject.Models
-@model IEnumerable<Variant>
+﻿@model IEnumerable<FinalProject.Models.Variant>
 
 @{
     Layout = null;
@@ -9,23 +8,24 @@
 <html>
 <head>
     <title>Список вариантов ответа</title>
+    <link type="text/css" rel="stylesheet" href="../../Content/MainVariant.css" />
 </head>
 <body>
-    <div>@ViewBag.QuestionFormulation</div>
-    @if (Model.ToList().Count > 0)
+    <a href="/Authorisation/index" class="link">Перейти на главную</a>
+    <a href="/Question/GetQuestions/@ViewBag.QuestionnaireId" class="link">Перейти к вопросам анкеты</a>
+    <p class="form-label">Формулировка вопроса: @ViewBag.QuestionFormulation</p>
+    @if (Model.Count() > 0)
     {
-        @foreach (Variant variant in Model)
+        foreach (var vari in Model)
         {
-            @using (Html.BeginForm("MyAction", "Variant", FormMethod.Post))
+            using (Html.BeginForm("MyAction", "Variant", FormMethod.Post, new { @class="Form"}))
             {
-                @Html.LabelFor(modelItem => variant.Number, "Номер вопроса: ")
-                @Html.DisplayFor(modelItem => variant.AnswerFormulation)
+                <p class="form-label">Номер ответа: @vari.Number</p>
                 <br />
-                @Html.LabelFor(modelItem => variant.AnswerFormulation, "Формулировка ответа: ")
-                @Html.LabelFor(modelItem => variant.AnswerFormulation)
-                @Html.HiddenFor(modelItem => variant.Id)
-                @Html.HiddenFor(modelItem => variant.QuestionId)
+                <p class="form-label">Формулировка ответа: @vari.AnswerFormulation</p>
                 <br />
+                <input type="hidden" name="Id" value="@vari.Id"/>
+                <input type="hidden" name="QuestionId" value="@vari.QuestionId"/>
                 <button name="action" value="edit">Редактировать</button>
                 <button name="action" value="delete">Удалить</button>
             }
@@ -33,12 +33,13 @@
     }
     else
     {
-        <p>Вариантов ответа пока нет</p>
+        <div class="clear-area">Вариантов ответа пока нет</div>
     }
     <div>
         @using (Html.BeginForm("AddVariantForm", "Variant", FormMethod.Post))
         {
-            @Html.HiddenFor()
+            <input type="hidden" name="QuestionId" value="@ViewBag.QuestionIdentify"/>
+            <button class="sub">Добавить</button>
         }
     </div>
 </body>

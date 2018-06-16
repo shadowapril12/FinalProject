@@ -7,23 +7,26 @@
 <html>
 <head>
     <title>Главная</title>
+    <link type="text/css" rel="stylesheet" href="../../Content/MainPage.css" />
 </head>
 <body>
     <div>
-        Полюзователь:
-        <br />
-        @foreach(var u in ViewBag.Users)
-        {
-            <p>Имя - @u.Name</p>
-            <p>Роль - @u.Role</p>
-        }
+        <p class="div-p">Пользователь: @ViewBag.User.Login</p>
     </div>
     <div>
         @if(ViewBag.Questionnaires.Count > 0)
         {
+            <a href="/Questionnaire/index" class="botr">Перейти к редактированию анкет</a>
             foreach(var questionnaire in ViewBag.Questionnaires)
             {
-                <p>Название анкеты: @questionnaire.Name</p>
+                using (Html.BeginForm("StartTesting", "Testing", FormMethod.Post, new { @class = "form" }))
+                {
+                    <p>Название анкеты: @questionnaire.Name</p>
+                    <input type="hidden" name="Id" value="@questionnaire.Id"/>
+                    <input type="hidden" name="userId" value="@ViewBag.User.Id" />
+                    <input type="submit" value="Пройти"/>
+                }               
+
             }
         }
         else
@@ -33,7 +36,9 @@
         <div>
             @using (Html.BeginForm("AddQuestionnaireForm", "Questionnaire", FormMethod.Post))
             {
-                <input type="submit" value="Добавить анкету"/>
+                <div class="sub">
+                    <button>Добавить анкету</button>
+                </div>
             }          
         </div>
     </div>

@@ -1,0 +1,34 @@
+﻿@model FinalProject.Models.Testing
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Вопрос
+    </title>
+    <link type="text/css" rel="stylesheet" href="../../Content/TestingForm.css" />
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("AddTesting", "Testing", FormMethod.Post, new { @class = "Form"}))
+        {
+            <h2>@ViewBag.QuestionnaireName</h2>
+            <h3>@ViewBag.QuestionFormulation</h3>
+            <input type="hidden" name="QuestionId" value="@Model.QuestionId"/>
+            <input type="hidden" name="QuestionnaireId" value="@Model.QuestionnaireId"/>
+            <input type="hidden" name="UserId" value="@Model.UserId"/>
+            <input type="hidden" name="Numb" value="@Model.Numb" />
+            <ul>
+                @foreach(var variant in ViewBag.Variants)
+                {
+                    <li>@variant.Number. @variant.AnswerFormulation<input type="radio" name="VariantId" value="@variant.Id"/></li>
+                }
+            </ul>
+            <input type="submit" value="Далее"/>
+        }
+</div>
+    </body>
+</html>

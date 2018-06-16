@@ -9,15 +9,16 @@
 <html>
 <head>
     <title>Форма редактирования анкеты</title>
+    <link type="text/css" rel="stylesheet" href="../../Content/EditQuestionnaire.css" />
 </head>
 <body>
-    @using (Html.BeginForm("EditQuestionnaire", "Questionnaire", FormMethod.Post))
+    @using (Html.BeginForm("EditQuestionnaire", "Questionnaire", FormMethod.Post, new { @class = "editForm"}))
     {
-        <p>@Html.HiddenFor(model => model.Id)</p>
         @Html.LabelFor(model => model.Name, "Название анкеты");
         <br />
-        @Html.EditorFor(model => model.Name);
-        <input type="submit" value="Редактровать"/>
+        @Html.TextBoxFor(model => model.Name, new { @class = "editor" });
+        <input type="submit" value="Подтвердить"/>
+        <p>@Html.HiddenFor(model => model.Id)</p>
     }
 </body>
 </html>

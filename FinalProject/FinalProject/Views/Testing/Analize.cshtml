@@ -1,0 +1,28 @@
+﻿@model IEnumerable<FinalProject.Models.Statistic>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Статистика</title>
+    <link type="text/css" rel="stylesheet" href="../../Content/Analize.css" />
+</head>
+<body>
+    <h2>Статистика</h2>
+    <a href="/Authorisation/index" class="link">Закончить тестирование</a>
+    <div class="div">
+        @foreach (var s in ViewBag.St)
+        {
+            <p class="form-label">@s.QuestionName</p>
+            <ul>
+                @foreach (var v in s.CountTime)
+                {
+                    <li class="form-label">@v</li>
+                }
+            </ul>
+        }
+    </div>
+</body>
+</html>

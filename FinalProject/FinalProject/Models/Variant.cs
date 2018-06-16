@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Newtonsoft.Json;
 
 namespace FinalProject.Models
 {
@@ -17,6 +18,7 @@ namespace FinalProject.Models
 
         public Question Question { get; set; }
 
+        [JsonIgnore]
         public ICollection<Testing> Testings { get; set; }
 
         public Variant()

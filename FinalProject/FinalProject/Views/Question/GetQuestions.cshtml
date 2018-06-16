@@ -8,39 +8,40 @@
 <html>
 <head>
     <title>Список вопросов анкеты</title>
+    <link type="text/css" rel="stylesheet" href="../../Content/getQuestions.css" />
 </head>
 <body>
-    @Html.ActionLink("На главную", "Index", "Home")
+    @Html.ActionLink("На главную", "Index", "Authorisation", null, new { @class = "link" })
     <br />
-    <p>@ViewBag.QuestionnaireName</p>
+    <p class="p-span">@ViewBag.QuestionnaireName</p>
     @if(Model.ToList().Count > 0)
     {
         foreach(var question in Model)
         {
-            <div style="border-width:1px; border-style:solid; border-color: black">
-            @using (Html.BeginForm("MyAction", "Question", FormMethod.Post))
+            using (Html.BeginForm("MyAction", "Question", FormMethod.Post, new { @class = "Form"}))
             {
-                @Html.LabelFor(modelItem => question.Formulation, "Формулировка вопроса: ")
+                @Html.LabelFor(modelItem => question.Formulation, "Формулировка вопроса: ", new { @class = "form-label"})
                 @Html.DisplayFor(modelItem => question.Formulation)
                 @Html.HiddenFor(modelItem => question.Id)
                 @Html.HiddenFor(modelItem => question.QuestionnaireId)
                 <br />
-                <a href="~/Controllers/Variant/Index/@question.Id">Перейти к вариантам ответов. @question.Id</a>             
+                <a href="~/Variant/Index/@question.Id" class="link">Перейти к вариантам ответов</a>             
+                <br />
                 <br />
                 <button name="action" value="edit">Редактировать</button>
                 <button name="action" value="delete">Удалить</button>                
             }
-            </div>        
+                  
         }
     }
     else
     {
-        <div>Вопросов в анкете пока нет</div>
+        <div class="div">Вопросов в анкете пока нет</div>
     }
     @using(Html.BeginForm("AddQuestionForm", "Question", FormMethod.Post))
     {
         <input type="hidden" name="QuestionnaireId" value="@ViewBag.QuestionnaireId"/>
-        <input type="submit" value="Добавить вопрос"/>
+        <button class="sub">Добавить вопрос</button>
     }
 
 </body>

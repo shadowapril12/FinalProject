@@ -1,0 +1,33 @@
+﻿@model FinalProject.Models.Variant
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Форма добавления варианта ответа</title>
+    <link type="text/css" rel="stylesheet" href="../../Content/AddVariant.css" />
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("AddVariant", "Variant", FormMethod.Post, new { @class = "Form"}))
+        {
+        <label for="Number" class="form-label">Номер ответа:
+        <br/>
+            <input type="text" class="editor" name="Number" id="Number"/>
+        </label>
+        <br />
+        <label for="AnswerFormulation" class="form-label">Формулировка ответа
+        <br />
+            <input type="text" class="editor" name="AnswerFormulation" id="AnswerFormulation"/>
+        </label>
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.QuestionId)
+        <input type="submit" value="Добавить"/>
+}
+    </div>
+</body>
+</html>
+

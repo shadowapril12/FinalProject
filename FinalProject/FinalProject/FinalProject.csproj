@@ -148,15 +148,21 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AnalizeController.cs" />
+    <Compile Include="Controllers\AuthorisationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
     <Compile Include="Controllers\QuestionnaireController.cs" />
+    <Compile Include="Controllers\TestingController.cs" />
     <Compile Include="Controllers\VariantController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Counter.cs" />
     <Compile Include="Models\Question.cs" />
     <Compile Include="Models\Questionnaire.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\Statistic.cs" />
     <Compile Include="Models\Testing.cs" />
     <Compile Include="Models\TestingContext.cs" />
     <Compile Include="Models\TestingContextInitializer.cs" />
@@ -165,8 +171,22 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\AddQuestion.css" />
+    <Content Include="Content\AddQuestionnaire.css" />
+    <Content Include="Content\AddVariant.css" />
+    <Content Include="Content\Analize.css" />
+    <Content Include="Content\Authorisation.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\EditQuestion.css" />
+    <Content Include="Content\EditQuestionnaire.css" />
+    <Content Include="Content\getQuestions.css" />
+    <Content Include="Content\GuestIndex.css" />
+    <Content Include="Content\IndexQuestionnaire.css" />
+    <Content Include="Content\MainPage.css" />
+    <Content Include="Content\MainVariant.css" />
+    <Content Include="Content\ShowTestingEnd.css" />
+    <Content Include="Content\TestingForm.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -208,6 +228,13 @@
     <Content Include="Views\Question\AddQuestionForm.cshtml" />
     <Content Include="Views\Question\EditQuestionForm.cshtml" />
     <Content Include="Views\Variant\Index.cshtml" />
+    <Content Include="Views\Variant\AddVariantForm.cshtml" />
+    <Content Include="Views\Testing\ShowTestingForm.cshtml" />
+    <Content Include="Views\Testing\ShowEndTesting.cshtml" />
+    <Content Include="Views\Authorisation\Index.cshtml" />
+    <Content Include="Views\Home\GuestIndex.cshtml" />
+    <Content Include="Views\Analize\Index.cshtml" />
+    <Content Include="Views\Testing\Analize.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

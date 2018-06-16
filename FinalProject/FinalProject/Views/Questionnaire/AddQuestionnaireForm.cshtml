@@ -8,14 +8,15 @@
 <html>
 <head>
     <title>Форма добавления анкеты</title>
+    <link type="text/css" rel="stylesheet" href="../../Content/AddQuestionnaire.css" />
 </head>
 <body>
     <div style="border-width: 1px; border-style:solid; border-color:black">
-        @using (Html.BeginForm("AddQuestionnaire", "Questionnaire", FormMethod.Post))
+        @using (Html.BeginForm("AddQuestionnaire", "Questionnaire", FormMethod.Post, new { @class="addForm" }))
         {
             @Html.LabelFor(model => model.Name, "Название анкеты");
             <br />
-            @Html.EditorFor(model => model.Name);
+            @Html.TextBoxFor(model => model.Name, new { @class = "editor"});
             <br />
             <input type="submit" value="Добавить"/>            
         }

@@ -8,10 +8,10 @@ namespace FinalProject.Models
 {
     public class TestingContext : DbContext
     {
-        static TestingContext()
-        {
-            Database.SetInitializer<TestingContext>(new TestingContextInitializer());
-        }
+        //static TestingContext()
+        //{
+        //    Database.SetInitializer<TestingContext>(new TestingContextInitializer());
+        //}
 
         public DbSet<User> Users { get; set; }
 
@@ -22,5 +22,7 @@ namespace FinalProject.Models
         public DbSet<Variant> Variants { get; set; }
 
         public DbSet<Testing> Testings { get; set; }
+
+        public DbSet<Role> Roles { get; set; }
     }
 }

@@ -1,0 +1,42 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Главная</title>
+    <link type="text/css" rel="stylesheet" href="../../Content/GuestIndex.css" />
+</head>
+<body>
+    <div>
+        <p class="form-label">Полюзователь: @ViewBag.User.Login</p>
+        <br />
+    </div>
+    <div>
+        @if (ViewBag.Questionnaires.Count > 0)
+        {
+            foreach (var questionnaire in ViewBag.Questionnaires)
+            {
+                using (Html.BeginForm("StartTesting", "Testing", FormMethod.Post, new { @class = "Form"}))
+                {
+                    <p class="form-label">Название анкеты: @questionnaire.Name</p>
+                    <p class=" = "form-label">Логин пользователя: @ViewBag.User.Login</p>
+                    <br />
+                    <input type="hidden" name="Id" value="@questionnaire.Id" />
+                    <input type="hidden" name="userId" value="@ViewBag.User.Id" />
+                    <br />
+                    <input type="submit" value="Пройти" />
+                }
+
+            }
+        }
+        else
+        {
+            <p>Анкеты пока отстутствуют</p>
+        }
+    </div>
+</body>
+</html>
+

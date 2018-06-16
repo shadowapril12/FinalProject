@@ -11,15 +11,28 @@ namespace FinalProject.Controllers
     {
         TestingContext db = new TestingContext();
 
-        public ActionResult Index()
+        public ActionResult Index(int userId)
         {
-            IEnumerable<User> users = db.Users;
+            User user = db.Users.Find(userId);
 
-            IEnumerable<Questionnaire> questionnaires = db.Questionnaires.ToList();
+            List<Questionnaire> questionnaires = db.Questionnaires.ToList();
 
             ViewBag.Questionnaires = questionnaires;
 
-            ViewBag.Users = users;
+            ViewBag.User = user;
+
+            return View();
+        }
+
+        public ActionResult GuestIndex(int userId)
+        {
+            User user = db.Users.Find(userId);
+
+            List<Questionnaire> questionnaires = db.Questionnaires.ToList();
+
+            ViewBag.Questionnaires = questionnaires;
+
+            ViewBag.User = user;
 
             return View();
         }

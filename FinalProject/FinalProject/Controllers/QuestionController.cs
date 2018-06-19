@@ -81,11 +81,41 @@ namespace FinalProject.Controllers
 
             int? QuestionnaireId = question.QuestionnaireId;
 
-            db.Questions.Remove(question);
+            List<Testing> t = db.Testings.Where(te => te.QuestionId == question.Id).ToList();
+
+            List<Variant> v = db.Variants.Where(ve => ve.QuestionId == question.Id).ToList();
+
+            Question q = db.Questions.Where(e => e.Id == id).FirstOrDefault();
+
+            foreach(var el in t)
+            {
+                db.Testings.Remove(el);
+                db.SaveChanges();
+            }
+
+            foreach(var el in v)
+            {
+                db.Variants.Remove(el);
+                db.SaveChanges();
+            }
+
+            db.Questions.Remove(q);
 
             db.SaveChanges();
 
             return RedirectToAction("GetQuestions", "Question", new { id = QuestionnaireId });
+            //if(t != null || v != null)
+            //{
+            //    return RedirectToAction("GetQuestions", "Question", new { id = QuestionnaireId });
+            //}
+            //else
+            //{
+            //    db.Questions.Remove(question);
+
+            //    db.SaveChanges();
+
+            //    return RedirectToAction("GetQuestions", "Question", new { id = QuestionnaireId });
+            //}
         }
 
         public ActionResult EditQuestionForm(int id)

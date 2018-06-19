@@ -186,6 +186,7 @@
     <Content Include="Content\MainPage.css" />
     <Content Include="Content\MainVariant.css" />
     <Content Include="Content\ShowTestingEnd.css" />
+    <Content Include="Content\StyleSheet1.css" />
     <Content Include="Content\TestingForm.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -233,8 +234,8 @@
     <Content Include="Views\Testing\ShowEndTesting.cshtml" />
     <Content Include="Views\Authorisation\Index.cshtml" />
     <Content Include="Views\Home\GuestIndex.cshtml" />
-    <Content Include="Views\Analize\Index.cshtml" />
-    <Content Include="Views\Testing\Analize.cshtml" />
+    <Content Include="Views\Variant\EditVariantForm.cshtml" />
+    <Content Include="Views\Analize\Analize.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

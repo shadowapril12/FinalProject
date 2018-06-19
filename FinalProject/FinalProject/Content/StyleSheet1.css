@@ -1,12 +1,29 @@
 ﻿body {
     box-sizing: border-box;
-    height: 100%;
+    height: 40cm;
     background-color: aliceblue;
 }
+
+.link {
+    width: 250px;
+    height: 150px;
+    text-decoration: none;
+    background-color: black;
+    color: white;
+    transition-duration: 0.5s;
+    padding: 3px;
+    margin: 10px;
+}
+
+    .link:hover {
+        background-color: red;
+        transition-duration: 0.5s;
+    }
 
 .Form {
     margin: 0 auto;
     max-width: 95%;
+    height: 10%;
     padding: 30px 30px 6px 30px;
     border: 1px solid rgba(0,0,0,.2);
     -moz-border-radius: 5px;
@@ -22,22 +39,12 @@
     overflow: hidden;
 }
 
-.p-span {
+.editor {
+    width: 20%;
+    overflow: auto;
+}
+
+.form-label {
     font-weight: bold;
     font-size: 20px;
-}
-
-.link {
-    width: 250px;
-    height: 150px;
-    text-decoration: none;
-    background-color: black;
-    color: white;
-    transition-duration: 0.5s;
-    padding: 3px;
-}
-
-.link:hover {
-    background-color: red;
-    transition-duration: 0.5s;
 }

@@ -1,7 +1,7 @@
 ﻿body {
     box-sizing: border-box;
     height: 40cm;
-    border: 1px solid green;
+    background-color: aliceblue;
 }
 
 .link {
@@ -23,7 +23,7 @@
 .Form {
     margin: 0 auto;
     max-width: 95%;
-    height: 10%;
+    height: 14%;
     padding: 30px 30px 6px 30px;
     border: 1px solid rgba(0,0,0,.2);
     -moz-border-radius: 5px;

@@ -65,22 +65,47 @@ namespace FinalProject.Controllers
             else
             {
                 //Редактирование будет реализовано позже
-                return RedirectToAction("DeleteVariant", "Variant", new { id = vari.Id });
+                return RedirectToAction("EditVAriantForm", "Variant", new { id = vari.Id });
             }
+        }
+
+        public ActionResult EditVariantForm(int id)
+        {
+            Variant vari = db.Variants.Find(id);
+
+            return View(vari);
+        }
+
+        [HttpPost]
+        public ActionResult EditVariant(Variant variant)
+        {
+            Question q = db.Questions.Where(p => p.Id == variant.QuestionId).FirstOrDefault();
+
+            db.Entry(variant).State = EntityState.Modified;
+
+            db.SaveChanges();
+
+            return RedirectToAction("Index", "Variant", new { id = q.Id});
         }
 
         public ActionResult DeleteVariant(int id)
         {
             Variant var = db.Variants.Find(id);
 
+            List<Testing> t = db.Testings.Where(te => te.VariantId == var.Id).ToList();          
+
             int? quesId = var.QuestionId;
 
-            db.Variants.Remove(var);
+            foreach(var el in t)
+            {
+                db.Testings.Remove(el);
+                db.SaveChanges();
+            }
 
+            db.Variants.Remove(var);
             db.SaveChanges();
 
             return RedirectToAction("Index", "Variant", new { id = quesId });
-
         }
 
         //Сборщик мусора

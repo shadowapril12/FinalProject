@@ -1,0 +1,33 @@
+﻿@model FinalProject.Models.Variant
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Редактирования варианта ответа</title>
+    <link type="text/css" rel="stylesheet" href="../../Content/StyleSheet1.css" />
+</head>
+<body>
+    <div>
+        <a href="/Variant/index/@Model.QuestionId" class="link">Вернуться к вариантам</a>
+    </div>
+    @using (Html.BeginForm("EditVariant", "Variant", FormMethod.Post, new { @class="Form"}))
+    {
+        @Html.LabelFor(model => model.Number, "Номер ответа", new { @class="form-label"});
+        <br />
+        @Html.TextBoxFor(model => model.Number, new { @class="editor"});
+        <br />
+        @Html.LabelFor(model => model.AnswerFormulation, "Вариант ответа", new { @class = "form-label" });
+        <br />
+        @Html.TextBoxFor(model => model.AnswerFormulation, new { @class = "editor" });
+        <input type="hidden" name="QuestionId" value="@Model.QuestionId" />
+        <input type="hidden" name="Id" value="@Model.Id" />
+        <br />
+        <input type="submit" value="Подтвердить изменения" />
+    }
+</body>
+</html>
+

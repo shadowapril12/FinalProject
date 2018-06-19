@@ -18,14 +18,16 @@
     {
         foreach (var vari in Model)
         {
-            using (Html.BeginForm("MyAction", "Variant", FormMethod.Post, new { @class="Form"}))
+            using (Html.BeginForm("MyAction", "Variant", FormMethod.Post, new { @class = "Form" }))
             {
+                <input type="hidden" name="Id" value="@vari.Id" />
+                <input type="hidden" name="QuestionId" value="@vari.QuestionId" />
                 <p class="form-label">Номер ответа: @vari.Number</p>
                 <br />
                 <p class="form-label">Формулировка ответа: @vari.AnswerFormulation</p>
                 <br />
-                <input type="hidden" name="Id" value="@vari.Id"/>
-                <input type="hidden" name="QuestionId" value="@vari.QuestionId"/>
+                <input type="hidden" name="Id" value="@vari.Id" />
+                <input type="hidden" name="QuestionId" value="@vari.QuestionId" />
                 <button name="action" value="edit">Редактировать</button>
                 <button name="action" value="delete">Удалить</button>
             }
@@ -38,7 +40,7 @@
     <div>
         @using (Html.BeginForm("AddVariantForm", "Variant", FormMethod.Post))
         {
-            <input type="hidden" name="QuestionId" value="@ViewBag.QuestionIdentify"/>
+            <input type="hidden" name="QuestionId" value="@ViewBag.QuestionIdentify" />
             <button class="sub">Добавить</button>
         }
     </div>

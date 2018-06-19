@@ -12,45 +12,54 @@ namespace FinalProject.Controllers
     {
         TestingContext db = new TestingContext();
 
-        public ActionResult Index(int questionnaireId)
+        [HttpGet]
+        public ActionResult Analize(int questionnaireId)
         {
             List<Testing> tests = db.Testings.Where(t => t.QuestionnaireId == questionnaireId).ToList();
             List<Question> questions = db.Questions.Where(q => q.QuestionnaireId == questionnaireId).ToList();
 
             List<Counter> counter = new List<Counter>();
 
-            Counter c = new Counter();
 
-            foreach(var question in questions)
+            foreach (var question in questions)
             {
-                foreach(var test in tests)
+
+                List<int?> searchId = new List<int?>();
+
+                Counter c = new Counter();
+
+                c.VariantsId = new List<int?>();
+
+                foreach (var test in tests)
                 {
-                    if(question.Id == test.QuestionId)
+                    if (test.QuestionId == question.Id)
                     {
-                        c.Quest = question;
-                        int? vId = test.VariantId;
-                        c.VariantsId.Add(vId);
+                        searchId.Add(test.VariantId);
                     }
                 }
+                c.Quest = question;
+                c.VariantsId = searchId;
                 counter.Add(c);
             }
 
             List<Statistic> stat = new List<Statistic>();
 
-            foreach(Counter finalCounter in counter)
+            foreach (Counter finalCounter in counter)
             {
                 Statistic s = new Statistic();
 
                 s.QuestionName = finalCounter.Quest.Formulation;
 
-                foreach(var variant in finalCounter.VariantsId.Distinct())
+                s.CountTime = new List<string>();
+
+                foreach (var variant in finalCounter.VariantsId.Distinct())
                 {
                     Variant var = db.Variants.Where(v => v.Id == variant).FirstOrDefault();
 
-                    string g = $"{var.AnswerFormulation} - {finalCounter.VariantsId.Where(x => x == variant)}";
+                    string g = $"{var.AnswerFormulation} - {finalCounter.VariantsId.Where(x => x == variant).Count()} человек(а)";
 
                     s.CountTime.Add(g);
-                    
+
                 }
 
                 stat.Add(s);

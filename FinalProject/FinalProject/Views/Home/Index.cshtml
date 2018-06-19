@@ -16,12 +16,12 @@
     <div>
         @if(ViewBag.Questionnaires.Count > 0)
         {
-            <a href="/Questionnaire/index" class="botr">Перейти к редактированию анкет</a>
+            <a href="/Questionnaire/index" class="link">Перейти к редактированию анкет</a>
             foreach(var questionnaire in ViewBag.Questionnaires)
             {
-                using (Html.BeginForm("StartTesting", "Testing", FormMethod.Post, new { @class = "form" }))
+                using (Html.BeginForm("StartTesting", "Testing", FormMethod.Post, new { @class = "Form" }))
                 {
-                    <p>Название анкеты: @questionnaire.Name</p>
+                    <p class="form-label">Название анкеты: @questionnaire.Name</p>
                     <input type="hidden" name="Id" value="@questionnaire.Id"/>
                     <input type="hidden" name="userId" value="@ViewBag.User.Id" />
                     <input type="submit" value="Пройти"/>
@@ -31,14 +31,12 @@
         }
         else
         {
-            <p>Анкеты пока отстутствуют</p>
+            <div class="div">Анкеты пока отсутствуют</div>
         }
         <div>
             @using (Html.BeginForm("AddQuestionnaireForm", "Questionnaire", FormMethod.Post))
             {
-                <div class="sub">
-                    <button>Добавить анкету</button>
-                </div>
+                 <button class="sub">Добавить анкету</button>
             }          
         </div>
     </div>
